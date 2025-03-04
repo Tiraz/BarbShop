@@ -6,22 +6,27 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MenuPrincipalActivity">
-    
+
     <FrameLayout
+        android:id="@+id/layContainerTelaPrincipal"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/layContainerTelaPrincipal"/>
-    
+        android:layout_above="@id/botNavgationTelaPrincipal"/>
+
     <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewPagTelaPrincipal"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/viewPagTelaPrincipal"/>
+        android:layout_above="@id/botNavgationTelaPrincipal"/>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/botNavgationTelaPrincipal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/botNavgationTelaPrincipal"
-        app:menu="@menu/menu_tela_principal"
-        android:layout_alignBottom="@id/layContainerTelaPrincipal"/>
+        android:layout_alignParentBottom="true"
+        app:itemTextColor="@color/corSecundaria"
+        app:itemRippleColor="@color/corTercearia"
+        android:background="@color/corPrimaria"
+        app:menu="@menu/menu_tela_principal" />
 
 </RelativeLayout>

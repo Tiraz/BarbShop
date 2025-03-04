@@ -4,13 +4,16 @@
     <item
         android:title="Agenda"
         android:id="@+id/itemMenuTalaPrincipalAgenda"
-        android:enabled="true"/>
+        android:enabled="true"
+        android:icon="@drawable/baseline_calendar_month"/>
     <item
         android:title="Serviço"
         android:id="@+id/itemMenuTalaPrincipalServico"
+        android:icon="@drawable/baseline_design_services"
         android:enabled="true"/>
     <item
         android:title="Extrato"
         android:id="@+id/itemMenuTalaPrincipalExtrato"
-        android:enabled="true"/>
+        android:enabled="true"
+        android:icon="@drawable/baseline_assignment"/>
 </menu>

@@ -2,4 +2,9 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="corPrimaria">#000000</color>
+    <color name="corSecundaria">#F7F7F7</color>
+    <color name="corTercearia">#FFB22C</color>
+    <color name="corQuartenaria">#854836</color>
 </resources>

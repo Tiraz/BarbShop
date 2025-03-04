@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#2DE2F6"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/corQuartenaria"
     android:orientation="vertical"
     tools:context=".FrServicosFragment">
 
@@ -11,7 +12,10 @@
     <com.google.android.material.tabs.TabLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/tabLayoutFragmentServico">
+        android:background="@color/corPrimaria"
+        app:tabTextColor="@color/corSecundaria"
+        android:id="@+id/tabLayoutFragmentServico"
+        app:tabIndicatorColor="@color/corSecundaria">
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

@@ -43,48 +43,11 @@ public class FrGerenciarServicoFragment extends Fragment {
         lista_servicos.add(
                 new ObjServico("Luzes", 45, 40)
         );
-        lista_servicos.add(
-                new ObjServico("Corte", 30, 40)
-        );
 
-        lista_servicos.add(
-                new ObjServico("Sombrancelha", 15, 15)
-        );
-
-        lista_servicos.add(
-                new ObjServico("Barba", 30, 35)
-        );
-
-        lista_servicos.add(
-                new ObjServico("Luzes", 45, 40)
-        );
-
-        lista_servicos.add(
-                new ObjServico("Barba", 30, 35)
-        );
-
-        lista_servicos.add(
-                new ObjServico("Luzes", 45, 40)
-        );
-        lista_servicos.add(
-                new ObjServico("Corte", 30, 40)
-        );
-
-        lista_servicos.add(
-                new ObjServico("Sombrancelha", 15, 15)
-        );
-
-        lista_servicos.add(
-                new ObjServico("Barba", 30, 35)
-        );
-
-        lista_servicos.add(
-                new ObjServico("Luzes", 45, 40)
-        );
 
         AdaptadorFragGerServicos adaptador_servicos = new AdaptadorFragGerServicos(getContext(),lista_servicos);
 
-        recycler_view.setLayoutManager(new GridLayoutManager(getContext(),2));
+        recycler_view.setLayoutManager(new GridLayoutManager(getContext(),1));
 
         recycler_view.hasFixedSize();
 
