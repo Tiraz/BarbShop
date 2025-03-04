@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:title="Agenda"
+        android:id="@+id/itemMenuTalaPrincipalAgenda"
+        android:enabled="true"/>
+    <item
+        android:title="Serviço"
+        android:id="@+id/itemMenuTalaPrincipalServico"
+        android:enabled="true"/>
+    <item
+        android:title="Extrato"
+        android:id="@+id/itemMenuTalaPrincipalExtrato"
+        android:enabled="true"/>
+</menu>
