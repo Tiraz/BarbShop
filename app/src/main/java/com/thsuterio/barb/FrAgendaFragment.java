@@ -3,62 +3,54 @@ package com.thsuterio.barb;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link FrAgendaFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import java.util.ArrayList;
+import java.util.List;
+
+
 public class FrAgendaFragment extends Fragment {
-
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public FrAgendaFragment() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment FrAgendaFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static FrAgendaFragment newInstance(String param1, String param2) {
-        FrAgendaFragment fragment = new FrAgendaFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
+    RecyclerView recyclerView;
+    List<ObjAgendado> list_agendado = new ArrayList<>();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_fr_agenda, container, false);
+        View view = inflater.inflate(R.layout.fragment_fr_agenda, container, false);
+
+        recyclerView = view.findViewById(R.id.recFragmentAgenda);
+
+
+        adicionarAgenda("Hugo", "50", "xx/xx/xxxx", "00:00");
+        adicionarAgenda("Pedro", "30", "xx/xx/xxxx", "00:00");
+        adicionarAgenda("João", "110", "xx/xx/xxxx", "00:00");
+        adicionarAgenda("Marcos", "70", "xx/xx/xxxx", "00:00");
+
+        AdaptadorFragAgenda adaptadorFragAgenda = new AdaptadorFragAgenda(getContext(), list_agendado);
+
+        recyclerView.setLayoutManager(new GridLayoutManager(getContext(),1));
+
+        recyclerView.hasFixedSize();
+
+        recyclerView.setAdapter(adaptadorFragAgenda);
+
+        return view;
     }
+
+
+    private void adicionarAgenda(String nome, String valor, String dia, String hora){
+        String textNome = "Nome: " + nome;
+        String textValor = "Valor: R$" + valor;
+        String textDia = "Dia: " + dia;
+        String textHora = "Hora: " + hora;
+        list_agendado.add(
+                new ObjAgendado(textDia,textHora, textNome,textValor)
+        );
+    }
+
 }
