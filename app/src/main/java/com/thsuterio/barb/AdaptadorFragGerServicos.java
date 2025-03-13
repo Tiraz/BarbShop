@@ -34,8 +34,7 @@ public class AdaptadorFragGerServicos extends RecyclerView.Adapter<AdaptadorFrag
     @Override
     public void onBindViewHolder(@NonNull AdaptadorFragGerServicos.ViewHolder holder, int position) {
         holder.nome_servico.setText(list_servicos.get(position).getNome_servico());
-        holder.tempo_est_servico.setText(String.valueOf(list_servicos.get(position).getTempo_estimado_servico()));
-        holder.valor_servico.setText(String.valueOf(list_servicos.get(position).getValor_servico()));
+       holder.valor_servico.setText(list_servicos.get(position).getValor_servico());
     }
 
     @Override
@@ -48,9 +47,8 @@ public class AdaptadorFragGerServicos extends RecyclerView.Adapter<AdaptadorFrag
 
         public ViewHolder (@NonNull View itemView){
             super(itemView);
-            nome_servico = itemView.findViewById(R.id.txtNomeServico);
-            tempo_est_servico = itemView.findViewById(R.id.txtTempoEstServico);
-            valor_servico = itemView.findViewById(R.id.txtValorServico);
+            nome_servico = itemView.findViewById(R.id.txtModeloNomeServico);
+            valor_servico = itemView.findViewById(R.id.txtModeloValorServico);
         }
     }
 }

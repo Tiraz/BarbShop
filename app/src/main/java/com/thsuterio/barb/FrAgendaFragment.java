@@ -45,7 +45,7 @@ public class FrAgendaFragment extends Fragment {
 
     private void adicionarAgenda(String nome, String valor, String dia, String hora){
         String textNome = "Nome: " + nome;
-        String textValor = "Valor: R$" + valor;
+        String textValor = "Valor: R$" + valor + ",00";
         String textDia = "Dia: " + dia;
         String textHora = "Hora: " + hora;
         list_agendado.add(

@@ -28,21 +28,12 @@ public class FrGerenciarServicoFragment extends Fragment {
 
         lista_servicos = new ArrayList<>();
 
-        lista_servicos.add(
-                new ObjServico("Corte", 30, 40)
-        );
 
-        lista_servicos.add(
-                new ObjServico("Sombrancelha", 15, 15)
-        );
+        adicionarServico("Luzes", "40");
+        adicionarServico("Corte", "40");
+        adicionarServico("Sombrancelha", "15");
+        adicionarServico("Barba", "35");
 
-        lista_servicos.add(
-                new ObjServico("Barba", 30, 35)
-        );
-
-        lista_servicos.add(
-                new ObjServico("Luzes", 45, 40)
-        );
 
 
         AdaptadorFragGerServicos adaptador_servicos = new AdaptadorFragGerServicos(getContext(),lista_servicos);
@@ -54,4 +45,13 @@ public class FrGerenciarServicoFragment extends Fragment {
         recycler_view.setAdapter(adaptador_servicos);
         return view;
     }
+
+    private void adicionarServico(String nome, String valor){
+        String textNome = "Serviço: " + nome;
+        String textValor = "Valor: R$" + valor + ",00";
+        lista_servicos.add(
+                new ObjServico(textNome, textValor)
+        );
+    }
+
 }

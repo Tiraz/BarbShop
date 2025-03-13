@@ -1,15 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FrExtratoFragment"
-    android:background="#48E733">
+    android:background="@color/corQuartenaria"
+    android:orientation="vertical"
+    tools:context=".FrExtratoFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="Novembro"
+        android:textSize="25sp"
+        android:textColor="@color/corSecundaria"/>
 
-</FrameLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="Dia"
+            android:gravity="center_horizontal"
+            android:background="@color/corPrimaria"
+            android:textSize="25sp"
+            android:textColor="@color/corSecundaria"/>
+        <TextView
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:gravity="center_horizontal"
+            android:text="Quantidade"
+            android:background="@color/corPrimaria"
+            android:textSize="25sp"
+            android:textColor="@color/corSecundaria"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:background="@color/corPrimaria"
+            android:layout_margin="5dp"
+            android:text="Valor"
+            android:textSize="25sp"
+            android:textColor="@color/corSecundaria"/>
+
+
+
+    </LinearLayout>
+
+</LinearLayout>
