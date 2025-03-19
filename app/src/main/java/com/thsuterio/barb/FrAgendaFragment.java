@@ -9,14 +9,17 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class FrAgendaFragment extends Fragment {
+public class FrAgendaFragment extends Fragment implements DialogAgendarInputFlagment.DialogLister{
     RecyclerView recyclerView;
     List<ObjAgendado> list_agendado = new ArrayList<>();
+    Button btn_novo_agendamento;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -24,6 +27,15 @@ public class FrAgendaFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_fr_agenda, container, false);
 
         recyclerView = view.findViewById(R.id.recFragmentAgenda);
+
+        btn_novo_agendamento = view.findViewById(R.id.btnNovoAgendamento);
+        btn_novo_agendamento.setOnClickListener(v -> {
+            DialogAgendarInputFlagment dialog = new DialogAgendarInputFlagment();
+            dialog.show(getChildFragmentManager(), "Teste");
+        });
+
+
+
 
 
         adicionarAgenda("Hugo", "50", "xx/xx/xxxx", "00:00");
@@ -51,6 +63,11 @@ public class FrAgendaFragment extends Fragment {
         list_agendado.add(
                 new ObjAgendado(textDia,textHora, textNome,textValor)
         );
+    }
+
+    public void onInputReceived(String input){
+        Toast.makeText(getContext(), input, Toast.LENGTH_SHORT).show();
+
     }
 
 }

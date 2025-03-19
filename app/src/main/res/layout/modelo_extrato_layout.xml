@@ -1,25 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="100dp">
+    android:layout_height="80dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="5dp"
-            android:layout_margin="5dp"
-            android:background="@color/corTercearia" />
+        android:orientation="vertical"
+        android:background="@color/corTercearia"
+        android:gravity="center_vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="70dp"
             android:orientation="horizontal">
             <TextView
-                android:layout_width="100dp"
+                android:layout_width="110dp"
+                android:id="@+id/txtModeloExtratoDate"
                 android:layout_height="match_parent"
                 android:text="1"
                 android:textColor="@color/corSecundaria"
@@ -31,16 +28,18 @@
                 android:layout_width="150dp"
                 android:layout_height="match_parent"
                 android:textColor="@color/corSecundaria"
+                android:id="@+id/txtModeloExtratoQuantidade"
                 android:layout_marginLeft="5dp"
                 android:text="1"
                 android:textSize="20sp"
                 android:gravity="center_vertical|center_horizontal"
                 android:background="@color/corPrimaria"/>
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="145dp"
                 android:layout_height="match_parent"
                 android:textColor="@color/corSecundaria"
                 android:layout_marginLeft="5dp"
+                android:id="@+id/txtModeloExtratoValor"
                 android:text="1"
                 android:textSize="20sp"
                 android:gravity="center_vertical|center_horizontal"
@@ -49,11 +48,7 @@
         </LinearLayout>
 
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="5dp"
-            android:layout_margin="5dp"
-            android:background="@color/corTercearia" />
+
 
     </LinearLayout>
 

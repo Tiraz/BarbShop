@@ -13,6 +13,9 @@
         android:theme="@style/Theme.Barb"
         tools:targetApi="31">
         <activity
+            android:name=".ConfiguracaoActivity"
+            android:exported="false" />
+        <activity
             android:name=".MenuPrincipalActivity"
             android:exported="false" />
         <activity

@@ -18,6 +18,7 @@ public class MenuPrincipalActivity extends AppCompatActivity {
     ViewPager2 view_pag_tela_principal;
     AdaptadorTelaPrincipal adapter_tela_principal;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
