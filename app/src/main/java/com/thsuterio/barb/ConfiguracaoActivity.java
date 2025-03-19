@@ -1,6 +1,8 @@
 package com.thsuterio.barb;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -8,7 +10,11 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.google.android.material.appbar.MaterialToolbar;
+
 public class ConfiguracaoActivity extends AppCompatActivity {
+
+    MaterialToolbar mat_retornar_config;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,5 +26,16 @@ public class ConfiguracaoActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        mat_retornar_config = findViewById(R.id.appBarTopRetornarConfig);
+
+        mat_retornar_config.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), MenuPrincipalActivity.class));
+                finish();
+            }
+        });
+
     }
 }

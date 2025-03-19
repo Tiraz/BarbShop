@@ -1,7 +1,9 @@
 package com.thsuterio.barb;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,6 +12,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.viewpager2.widget.ViewPager2;
 
+import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MenuPrincipalActivity extends AppCompatActivity {
@@ -17,6 +20,10 @@ public class MenuPrincipalActivity extends AppCompatActivity {
     BottomNavigationView bot_nav_tela_principal;
     ViewPager2 view_pag_tela_principal;
     AdaptadorTelaPrincipal adapter_tela_principal;
+
+    MaterialToolbar mat_top_bar_config;
+
+
 
 
     @Override
@@ -29,6 +36,17 @@ public class MenuPrincipalActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        mat_top_bar_config  = findViewById(R.id.matTooBarMenuPrincipal);
+
+        mat_top_bar_config.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(),ConfiguracaoActivity.class));
+                finish();
+            }
+        });
+
 
         bot_nav_tela_principal = findViewById(R.id.botNavgationTelaPrincipal);
         view_pag_tela_principal = findViewById(R.id.viewPagTelaPrincipal);
@@ -67,6 +85,8 @@ public class MenuPrincipalActivity extends AppCompatActivity {
 
             }
         });
+
+
 
     }
 }

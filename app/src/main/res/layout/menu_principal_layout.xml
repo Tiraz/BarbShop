@@ -7,15 +7,32 @@
     android:layout_height="match_parent"
     tools:context=".MenuPrincipalActivity">
 
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/appBarTopNavTelaPrincipal">
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/matTooBarMenuPrincipal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/corPrimaria"
+            app:title="Barb shop"
+            app:titleTextColor="@color/corSecundaria"
+            app:titleCentered="true"
+            app:navigationIcon="@drawable/baseline_miscellaneous_services"/>
+    </com.google.android.material.appbar.AppBarLayout>
+
     <FrameLayout
         android:id="@+id/layContainerTelaPrincipal"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@id/botNavgationTelaPrincipal"/>
+        android:layout_above="@id/botNavgationTelaPrincipal"
+        android:layout_below="@id/appBarTopNavTelaPrincipal"/>
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/viewPagTelaPrincipal"
         android:layout_width="match_parent"
+        android:layout_below="@id/appBarTopNavTelaPrincipal"
         android:layout_height="match_parent"
         android:layout_above="@id/botNavgationTelaPrincipal"/>
 
