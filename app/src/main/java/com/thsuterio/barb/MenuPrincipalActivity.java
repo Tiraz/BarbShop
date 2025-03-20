@@ -2,6 +2,7 @@ package com.thsuterio.barb;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.ContextMenu;
 import android.view.View;
 import android.widget.Toast;
 
@@ -12,6 +13,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.viewpager2.widget.ViewPager2;
 
+import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -21,6 +23,7 @@ public class MenuPrincipalActivity extends AppCompatActivity {
     ViewPager2 view_pag_tela_principal;
     AdaptadorTelaPrincipal adapter_tela_principal;
 
+    AppBarLayout top_bar_layout;
     MaterialToolbar mat_top_bar_config;
 
 

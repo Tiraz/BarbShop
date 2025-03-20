@@ -35,7 +35,8 @@
                 android:gravity="center_vertical|center_horizontal"
                 android:background="@color/corPrimaria"/>
             <TextView
-                android:layout_width="145dp"
+                android:layout_width="match_parent"
+                android:layout_marginRight="5dp"
                 android:layout_height="match_parent"
                 android:textColor="@color/corSecundaria"
                 android:layout_marginLeft="5dp"
