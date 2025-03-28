@@ -11,6 +11,7 @@
 
     <CalendarView
         android:layout_width="wrap_content"
+        android:id="@+id/dtpAgenda"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:background="@color/corSecundaria" />
