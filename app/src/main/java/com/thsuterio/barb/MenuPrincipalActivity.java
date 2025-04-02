@@ -40,14 +40,15 @@ public class MenuPrincipalActivity extends AppCompatActivity {
             return insets;
         });
 
-        mat_top_bar_config  = findViewById(R.id.matTooBarMenuPrincipal);
-
-        mat_top_bar_config.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        //top bar confiigurando apresentando xml+JAVA
+        mat_top_bar_config = findViewById(R.id.matTooBarMenuPrincipal);
+        //quando o usuario clicar pega o id onde ocorreu o click compara e abre a activiti selecionada
+        mat_top_bar_config.setOnMenuItemClickListener(item -> {
+            if (item.getItemId() == R.id.menuItemCOnfiguracao) {
                 startActivity(new Intent(getApplicationContext(),ConfiguracaoActivity.class));
                 finish();
             }
+            return true;
         });
 
 
@@ -69,8 +70,6 @@ public class MenuPrincipalActivity extends AppCompatActivity {
                 view_pag_tela_principal.setCurrentItem(2);
 
             }
-
-
             return true;
         });
 

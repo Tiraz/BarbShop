@@ -19,9 +19,9 @@
             android:layout_height="wrap_content"
             android:background="@color/corPrimaria"
             app:title="Barb shop"
+            app:menu="@menu/menu_top_bar_layout"
             app:titleTextColor="@color/corSecundaria"
-            app:titleCentered="true"
-            app:navigationIcon="@drawable/baseline_miscellaneous_services"/>
+            app:titleCentered="true"/>
     </com.google.android.material.appbar.AppBarLayout>
 
     <FrameLayout
