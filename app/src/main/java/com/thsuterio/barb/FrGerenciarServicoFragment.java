@@ -16,8 +16,7 @@ import java.util.List;
 
 public class FrGerenciarServicoFragment extends Fragment {
 
-   RecyclerView recycler_view;
-   List<ObjServico> lista_servicos;
+    RecyclerView recycler_view;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -26,17 +25,16 @@ public class FrGerenciarServicoFragment extends Fragment {
 
         recycler_view = view.findViewById(R.id.recFragmentGerServico);
 
-        lista_servicos = new ArrayList<>();
 
-
-        adicionarServico("Luzes", "40");
-        adicionarServico("Corte", "40");
-        adicionarServico("Sombrancelha", "15");
-        adicionarServico("Barba", "35");
+        adicionarServico("Luzes", 30.00f);
+        adicionarServico("Corte", 40.00f);
+        adicionarServico("Sombrancelha", 15.00f);
+        adicionarServico("Barba", 35.00f);
 
 
 
-        AdaptadorFragGerServicos adaptador_servicos = new AdaptadorFragGerServicos(getContext(),lista_servicos);
+        AdaptadorFragGerServicos adaptador_servicos = new AdaptadorFragGerServicos(getContext(),ControleDados
+                .getInstance().lista_servico_cd);
 
         recycler_view.setLayoutManager(new GridLayoutManager(getContext(),1));
 
@@ -46,11 +44,10 @@ public class FrGerenciarServicoFragment extends Fragment {
         return view;
     }
 
-    private void adicionarServico(String nome, String valor){
+    private void adicionarServico(String nome, float valor){
         String textNome = "Serviço: " + nome;
-        String textValor = "Valor: R$" + valor + ",00";
-        lista_servicos.add(
-                new ObjServico(textNome, textValor)
+        ControleDados.getInstance().lista_servico_cd.add(
+                new ObjServico(textNome, valor)
         );
     }
 

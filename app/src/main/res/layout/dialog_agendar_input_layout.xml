@@ -17,11 +17,79 @@
         android:layout_height="wrap_content"
         android:textSize="14sp"
         android:hint="Digite o nome"/>
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/recServicosAgendar"/>
 
+    <View
+        android:layout_margin="3dp"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="@color/corPrimaria"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/recServicosEscolhasAgendar"/>
+
+    <View
+        android:layout_margin="3dp"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="@color/corPrimaria"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            android:textColor="@color/corPrimaria"
+            android:backgroundTint="@color/corTercearia"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnHoraAgendar"
+            android:text="Hora"
+            android:layout_marginLeft="20dp"
+            android:textSize="17sp"/>
+        <Button
+            android:textColor="@color/corPrimaria"
+            android:backgroundTint="@color/corTercearia"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnDataAgendar"
+            android:text="00/00/0000"
+            android:layout_marginLeft="50dp"
+            android:textSize="17sp"/>
+
+    </LinearLayout>
+
+    <View
+        android:layout_margin="3dp"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="@color/corPrimaria"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="26sp"
+        android:id="@+id/txtValorTotalDialogAgendar"
+        android:text="Valor total: R$ 50,00"
+        android:background="@color/corTercearia"
+        android:textColor="@color/corPrimaria"/>
+    <View
+        android:layout_margin="3dp"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="@color/corPrimaria"/>
     <Button
         android:id="@+id/btnSalvarAgenda"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textSize="26sp"
+        android:textColor="@color/corPrimaria"
+        android:backgroundTint="@color/corTercearia"
         android:text="Salvar"/>
 
 </LinearLayout>

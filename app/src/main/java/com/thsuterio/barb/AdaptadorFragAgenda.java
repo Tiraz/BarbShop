@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -36,6 +37,7 @@ public class AdaptadorFragAgenda extends RecyclerView.Adapter<AdaptadorFragAgend
         holder.valor_agenda.setText(lista_agendado.get(position).getValor_agendado());
         holder.dia_agenda.setText(lista_agendado.get(position).getDia_agendado());
         holder.hora_agenda.setText(lista_agendado.get(position).getHora_agendado());
+        holder.img_agendado.setImageResource(lista_agendado.get(position).getImg_agendado());
     }
 
     @Override
@@ -45,12 +47,14 @@ public class AdaptadorFragAgenda extends RecyclerView.Adapter<AdaptadorFragAgend
 
     public class ViewHolder extends RecyclerView.ViewHolder{
         TextView nome_agenda, valor_agenda, dia_agenda,hora_agenda;
+        ImageView img_agendado;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             nome_agenda = itemView.findViewById(R.id.txtModeloAgendaNome);
             valor_agenda = itemView.findViewById((R.id.txtModeloAgendaValor));
             dia_agenda = itemView.findViewById((R.id.txtModeloAgendaDia));
             hora_agenda = itemView.findViewById((R.id.txtModeloAgendaHora));
+            img_agendado = itemView.findViewById(R.id.imgModeloAvatarAgenda);
         }
     }
 }

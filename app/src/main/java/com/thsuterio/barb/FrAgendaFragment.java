@@ -20,6 +20,7 @@ import com.google.android.material.datepicker.MaterialDatePicker;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 
 public class FrAgendaFragment extends Fragment implements DialogAgendarInputFlagment.DialogLister{
@@ -58,18 +59,14 @@ public class FrAgendaFragment extends Fragment implements DialogAgendarInputFlag
 
 
 
-
-
-        adicionarAgenda("Hugo", "50", "xx/xx/xxxx", "00:00");
+        /*adicionarAgenda("Hugo", "50", "xx/xx/xxxx", "00:00");
         adicionarAgenda("Pedro", "30", "xx/xx/xxxx", "00:00");
         adicionarAgenda("João", "110", "xx/xx/xxxx", "00:00");
-        adicionarAgenda("Marcos", "70", "xx/xx/xxxx", "00:00");
+        adicionarAgenda("Marcos", "70", "xx/xx/xxxx", "00:00");*/
 
-        AdaptadorFragAgenda adaptadorFragAgenda = new AdaptadorFragAgenda(getContext(), list_agendado);
+        AdaptadorFragAgenda adaptadorFragAgenda = new AdaptadorFragAgenda(getContext(), ControleDados.getInstance().lista_agendado_cd);
 
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(),1));
-
-        recyclerView.hasFixedSize();
 
         recyclerView.setAdapter(adaptadorFragAgenda);
 
@@ -83,13 +80,30 @@ public class FrAgendaFragment extends Fragment implements DialogAgendarInputFlag
         String textDia = "Dia: " + dia;
         String textHora = "Hora: " + hora;
         list_agendado.add(
-                new ObjAgendado(textDia,textHora, textNome,textValor)
+                new ObjAgendado(textDia,textHora, textNome,textValor, avatarRandom())
         );
     }
 
-    public void onInputReceived(String input){
-        Toast.makeText(getContext(), input, Toast.LENGTH_SHORT).show();
-
+    private int avatarRandom(){
+        Random gerador = new Random();
+        int num = gerador.nextInt(6);
+        switch (num){
+            case 0:
+                return R.drawable.person_um;
+            case 1:
+                return R.drawable.person_dois;
+            case 2:
+                return R.drawable.person_tres;
+            case 3:
+                return R.drawable.person_quatro;
+            case 4:
+                return R.drawable.person_cinco;
+        }
+        return R.drawable.person_um;
     }
 
+    @Override
+    public void onInputReceived(int codigo, float vl_total) {
+        Toast.makeText(getContext(), codigo, Toast.LENGTH_SHORT).show();
+    }
 }

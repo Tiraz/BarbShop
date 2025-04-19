@@ -5,6 +5,16 @@ public class ObjAgendado {
     String valor_agendado;
     String dia_agendado;
 
+    public int getImg_agendado() {
+        return img_agendado;
+    }
+
+    public void setImg_agendado(int img_agendado) {
+        this.img_agendado = img_agendado;
+    }
+
+    int img_agendado;
+
     public String getDia_agendado() {
         return dia_agendado;
     }
@@ -39,11 +49,12 @@ public class ObjAgendado {
 
     String hora_agendado;
 
-    public ObjAgendado(String dia_agendado, String hora_agendado, String nome_agendado, String valor_agendado) {
+    public ObjAgendado(String dia_agendado, String hora_agendado, String nome_agendado, String valor_agendado, int img_agendado) {
         this.dia_agendado = dia_agendado;
         this.hora_agendado = hora_agendado;
         this.nome_agendado = nome_agendado;
         this.valor_agendado = valor_agendado;
+        this.img_agendado = img_agendado;
     }
 
 
