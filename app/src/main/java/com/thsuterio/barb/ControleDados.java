@@ -12,6 +12,7 @@ public class ControleDados {
     List<ObjAgendado> lista_agendado_cd = new ArrayList<>();
     List<ObjExtrato> lista_extrato_cd = new ArrayList<>();
     List<ObjServico> lista_servico_cd = new ArrayList<>();
+    List<ObjServicoEscolha> lista_escolha = new ArrayList<>();
 
     //Construtor privado que impede que outras classes criem novos objetos ControleDados
     private ControleDados(){};
@@ -19,5 +20,15 @@ public class ControleDados {
     //Metodo publico para acessar
     public static ControleDados getInstance(){
         return INSTANCE;
+    }
+
+    public void adicionarServico(String nome, float valor){
+        String textNome = "Serviço: " + nome;
+        ControleDados.getInstance().lista_servico_cd.add(
+                new ObjServico(textNome, valor)
+        );
+        ControleDados.getInstance().lista_escolha.add(
+                new ObjServicoEscolha(nome, valor)
+        );
     }
 }

@@ -26,11 +26,10 @@ public class FrGerenciarServicoFragment extends Fragment {
         recycler_view = view.findViewById(R.id.recFragmentGerServico);
 
 
-        adicionarServico("Luzes", 30.00f);
-        adicionarServico("Corte", 40.00f);
-        adicionarServico("Sombrancelha", 15.00f);
-        adicionarServico("Barba", 35.00f);
-
+        ControleDados.getInstance().adicionarServico("Luzes", 30.00f);
+        ControleDados.getInstance().adicionarServico("Corte", 40.00f);
+        ControleDados.getInstance().adicionarServico("Sombrancelha", 15.00f);
+        ControleDados.getInstance().adicionarServico("Barba", 35.00f);
 
 
         AdaptadorFragGerServicos adaptador_servicos = new AdaptadorFragGerServicos(getContext(),ControleDados
@@ -44,11 +43,14 @@ public class FrGerenciarServicoFragment extends Fragment {
         return view;
     }
 
-    private void adicionarServico(String nome, float valor){
+    /*private void adicionarServico(String nome, float valor){
         String textNome = "Serviço: " + nome;
         ControleDados.getInstance().lista_servico_cd.add(
                 new ObjServico(textNome, valor)
         );
-    }
+        ControleDados.getInstance().lista_escolha.add(
+                new ObjServicoEscolha(nome, valor)
+        );
+    }*/
 
 }

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="120dp"
+    android:layout_height="150dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="5dp"
+    app:cardCornerRadius="25dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/corTercearia">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:src="@drawable/servico_icon"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/corPrimaria"
+            android:id="@+id/txtModeloPequenoNomeServico"
+            android:textSize="15sp"
+            android:layout_gravity="center_horizontal"
+            android:text="Servico"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/corPrimaria"
+            android:textSize="15sp"
+            android:id="@+id/txtModeloPequenoValorServico"
+            android:layout_gravity="center_horizontal"
+            android:text="Valor"/>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
