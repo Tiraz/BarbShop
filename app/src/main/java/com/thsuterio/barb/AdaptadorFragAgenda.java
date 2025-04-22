@@ -57,4 +57,10 @@ public class AdaptadorFragAgenda extends RecyclerView.Adapter<AdaptadorFragAgend
             img_agendado = itemView.findViewById(R.id.imgModeloAvatarAgenda);
         }
     }
+
+    //Atualizar lista
+    public void atualizarListaAgendados(List<ObjAgendado> lista_atualizada){
+        lista_agendado = lista_atualizada;
+        notifyDataSetChanged();
+    }
 }

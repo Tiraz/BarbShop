@@ -1,95 +1,154 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="16dp"
+    android:background="@drawable/bg_linear_layoout_arredondado_borda"
     android:orientation="vertical"
     android:padding="10dp">
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Agendar Hórario"
-        android:textSize="26sp"
-        android:gravity="center_horizontal"/>
 
-    <EditText
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:id="@+id/edtNomeAgendar"
-        android:layout_height="wrap_content"
-        android:textSize="14sp"
-        android:hint="Digite o nome"/>
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/recServicosAgendar"/>
+        android:layout_height="match_parent"
+        android:fillViewport="true">
 
-    <View
-        android:layout_margin="3dp"
-        android:layout_width="match_parent"
-        android:layout_height="5dp"
-        android:background="@color/corPrimaria"/>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/recServicosEscolhasAgendar"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/bg_linear_layout_arredondado"
+            android:orientation="vertical"
+            android:padding="10dp">
 
-    <View
-        android:layout_margin="3dp"
-        android:layout_width="match_parent"
-        android:layout_height="5dp"
-        android:background="@color/corPrimaria"/>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <Button
-            android:textColor="@color/corPrimaria"
-            android:backgroundTint="@color/corTercearia"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/btnHoraAgendar"
-            android:text="Hora"
-            android:layout_marginLeft="20dp"
-            android:textSize="17sp"/>
-        <Button
-            android:textColor="@color/corPrimaria"
-            android:backgroundTint="@color/corTercearia"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/btnDataAgendar"
-            android:text="00/00/0000"
-            android:layout_marginLeft="50dp"
-            android:textSize="17sp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="Agendar Hórario"
+                android:textColor="@color/corSecundaria"
+                android:textSize="26sp" />
 
-    </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:layout_margin="3dp"
+                android:background="@color/corTercearia" />
 
-    <View
-        android:layout_margin="3dp"
-        android:layout_width="match_parent"
-        android:layout_height="5dp"
-        android:background="@color/corPrimaria"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="Opções"
+                android:textColor="@color/corSecundaria"
+                android:textSize="17sp" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="26sp"
-        android:id="@+id/txtValorTotalDialogAgendar"
-        android:text="Valor total: R$ 50,00"
-        android:background="@color/corTercearia"
-        android:textColor="@color/corPrimaria"/>
-    <View
-        android:layout_margin="3dp"
-        android:layout_width="match_parent"
-        android:layout_height="5dp"
-        android:background="@color/corPrimaria"/>
-    <Button
-        android:id="@+id/btnSalvarAgenda"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="26sp"
-        android:textColor="@color/corPrimaria"
-        android:backgroundTint="@color/corTercearia"
-        android:text="Salvar"/>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recServicosAgendar"
+                android:layout_width="match_parent"
+                android:layout_height="160dp"
+                android:layout_gravity="center" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:layout_margin="3dp"
+                android:background="@color/corTercearia" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="Escolhas"
+                android:textColor="@color/corSecundaria"
+                android:textSize="17sp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recServicosEscolhasAgendar"
+                android:layout_width="match_parent"
+                android:layout_height="160dp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:layout_margin="3dp"
+                android:background="@color/corTercearia" />
+
+            <EditText
+                android:id="@+id/edtNomeAgendar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Digite o nome"
+                android:textColor="@color/corSecundaria"
+                android:textColorHint="@color/corSecundaria"
+                android:textSize="20sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:layout_margin="3dp"
+                android:background="@color/corTercearia" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btnHoraAgendar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:backgroundTint="@color/corTercearia"
+                    android:text="Hora"
+                    android:textColor="@color/corPrimaria"
+                    android:textSize="17sp" />
+
+                <Button
+                    android:id="@+id/btnDataAgendar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="50dp"
+                    android:backgroundTint="@color/corTercearia"
+                    android:text="00/00/0000"
+                    android:textColor="@color/corPrimaria"
+                    android:textSize="17sp" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:layout_margin="3dp"
+                android:background="@color/corPrimaria" />
+
+            <TextView
+                android:id="@+id/txtValorTotalDialogAgendar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/corTercearia"
+                android:gravity="center_horizontal"
+                android:text="Valor total: R$ 50,00"
+                android:textColor="@color/corPrimaria"
+                android:textSize="26sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:layout_margin="3dp"
+                android:background="@color/corPrimaria" />
+
+            <Button
+                android:id="@+id/btnSalvarAgenda"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/corTercearia"
+                android:text="Salvar"
+                android:textColor="@color/corPrimaria"
+                android:textSize="26sp" />
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
 
 </LinearLayout>

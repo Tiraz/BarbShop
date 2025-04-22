@@ -41,9 +41,9 @@ public class AdaptadorDialogAgendar extends RecyclerView.Adapter<AdaptadorDialog
     @Override
     public void onBindViewHolder(@NonNull AdaptadorDialogAgendar.ViewHolder holder, int position) {
         //Formatar valor
-        String fmt_valor = "R$ " + ControleDados.getInstance().lista_servico_cd.get(position).getValor_servico();
+        String fmt_valor = "R$ " + lista_opcoes.get(position).getValor_escolha();
         //Setando os vlores no modelo
-        holder.nome_servico.setText(ControleDados.getInstance().lista_escolha.get(position).getNome_escolha());
+        holder.nome_servico.setText(lista_opcoes.get(position).getNome_escolha());
         holder.valor_servico.setText(fmt_valor);
 
         //Verificar click em um item

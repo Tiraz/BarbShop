@@ -12,7 +12,7 @@ public class ControleDados {
     List<ObjAgendado> lista_agendado_cd = new ArrayList<>();
     List<ObjExtrato> lista_extrato_cd = new ArrayList<>();
     List<ObjServico> lista_servico_cd = new ArrayList<>();
-    List<ObjServicoEscolha> lista_escolha = new ArrayList<>();
+    List<ObjServicoEscolha> lista_escolha_cd = new ArrayList<>();
 
     //Construtor privado que impede que outras classes criem novos objetos ControleDados
     private ControleDados(){};
@@ -27,7 +27,7 @@ public class ControleDados {
         ControleDados.getInstance().lista_servico_cd.add(
                 new ObjServico(textNome, valor)
         );
-        ControleDados.getInstance().lista_escolha.add(
+        ControleDados.getInstance().lista_escolha_cd.add(
                 new ObjServicoEscolha(nome, valor)
         );
     }

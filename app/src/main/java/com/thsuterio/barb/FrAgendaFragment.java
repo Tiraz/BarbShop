@@ -28,7 +28,7 @@ public class FrAgendaFragment extends Fragment implements DialogAgendarInputFlag
     List<ObjAgendado> list_agendado = new ArrayList<>();
     Button btn_novo_agendamento;
 
-
+    AdaptadorFragAgenda adaptadorFragAgenda;
     CalendarView calendarView;
 
     @Override
@@ -40,6 +40,7 @@ public class FrAgendaFragment extends Fragment implements DialogAgendarInputFlag
         recyclerView = view.findViewById(R.id.recFragmentAgenda);
         btn_novo_agendamento = view.findViewById(R.id.btnNovoAgendamento);
         calendarView = view.findViewById(R.id.dtpAgenda);
+
 
 
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
@@ -64,7 +65,7 @@ public class FrAgendaFragment extends Fragment implements DialogAgendarInputFlag
         adicionarAgenda("João", "110", "xx/xx/xxxx", "00:00");
         adicionarAgenda("Marcos", "70", "xx/xx/xxxx", "00:00");*/
 
-        AdaptadorFragAgenda adaptadorFragAgenda = new AdaptadorFragAgenda(getContext(), ControleDados.getInstance().lista_agendado_cd);
+        adaptadorFragAgenda = new AdaptadorFragAgenda(getContext(), ControleDados.getInstance().lista_agendado_cd);
 
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(),1));
 
@@ -76,12 +77,13 @@ public class FrAgendaFragment extends Fragment implements DialogAgendarInputFlag
 
     private void adicionarAgenda(String nome, String valor, String dia, String hora){
         String textNome = "Nome: " + nome;
-        String textValor = "Valor: R$" + valor + ",00";
+        //String textValor = "Valor: R$" + valor + ",00";
         String textDia = "Dia: " + dia;
         String textHora = "Hora: " + hora;
         list_agendado.add(
-                new ObjAgendado(textDia,textHora, textNome,textValor, avatarRandom())
+                new ObjAgendado(textDia,textHora, textNome,valor, avatarRandom())
         );
+        adaptadorFragAgenda.notifyDataSetChanged();
     }
 
     private int avatarRandom(){
@@ -103,7 +105,13 @@ public class FrAgendaFragment extends Fragment implements DialogAgendarInputFlag
     }
 
     @Override
-    public void onInputReceived(int codigo, float vl_total) {
-        Toast.makeText(getContext(), codigo, Toast.LENGTH_SHORT).show();
+    public void onInputReceived(String vl_total, String nome, String dia, String hora) {
+        adicionarAgenda(nome, vl_total,dia, hora);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        adaptadorFragAgenda.atualizarListaAgendados(list_agendado);
     }
 }
