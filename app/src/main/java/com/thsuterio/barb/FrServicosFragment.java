@@ -36,9 +36,6 @@ public class FrServicosFragment extends Fragment {
                     case 0:
                         escolhido = new FrGerenciarServicoFragment();
                         break;
-                    case 1:
-                        escolhido = new FrGerenciarFormasPagamentoFragment();
-                        break;
                 }
 
                 if(escolhido != null){

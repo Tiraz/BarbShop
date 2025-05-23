@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="5dp"
+        android:id="@+id/txtTitulo"
+        android:textSize="30sp"
+        android:text="Criar Serviço"/>
+    
+    <EditText
+        android:layout_below="@id/txtTitulo"
+        android:layout_margin="5dp"
+        android:id="@+id/txtCriarServNome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nome do Seriço"
+        android:textSize="20sp"/>
+
+    <EditText
+        android:layout_margin="5dp"
+        android:layout_below="@id/txtCriarServNome"
+        android:id="@+id/txtCriarServValor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Valor do Seriço"
+        android:inputType="numberDecimal"
+        android:textSize="20sp"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_margin="10dp"
+        android:text="Cancelar"
+        android:backgroundTint="@color/corNegar"
+        android:textSize="20sp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/txtCriarServValor"
+        android:id="@+id/btnCancelarCriaServ"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_margin="10dp"
+        android:text="Salvar"
+        android:backgroundTint="@color/corAceitar"
+        android:textSize="20sp"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/txtCriarServValor"
+        android:id="@+id/btnCriarSevice"/>
+
+
+
+</RelativeLayout>

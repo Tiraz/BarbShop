@@ -7,4 +7,6 @@
     <color name="corSecundaria">#F7F7F7</color>
     <color name="corTercearia">#FFB22C</color>
     <color name="corQuartenaria">#854836</color>
+    <color name="corNegar">#E20A0A</color>
+    <color name="corAceitar">#09ED09</color>
 </resources>

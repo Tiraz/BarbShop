@@ -1,25 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout android:orientation="vertical" xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".FrGerenciarServicoFragment">
 
+    <Button
+        android:id="@+id/btnNovoServico"
+        style="@style/Widget.Material3.Button.ElevatedButton.Icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:layout_gravity="center_horizontal"
+        android:text="Novo"
+        android:textSize="20sp"
+        app:icon="@drawable/baseline_add" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/recFragmentGerServico"/>
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/btnCadastrarServico"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|right"
-        android:background="@color/corQuartenaria"
-        android:layout_margin="50dp"
-        android:src="@drawable/baseline_add"
         />
 
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+</LinearLayout>

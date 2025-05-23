@@ -12,6 +12,8 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class SplashActivity extends AppCompatActivity {
 
+    ControleDados contDados = ControleDados.getInstance();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,6 +28,10 @@ public class SplashActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
+
+
+
+
                 startActivity(new Intent(getApplicationContext(),MenuPrincipalActivity.class));
                 finish();
             }

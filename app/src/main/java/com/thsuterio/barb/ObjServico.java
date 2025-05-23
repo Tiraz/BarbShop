@@ -1,6 +1,7 @@
 package com.thsuterio.barb;
 
 public class ObjServico {
+    private int idServico;
     private String nome_servico;
     private float valor_servico;
 
@@ -25,5 +26,13 @@ public class ObjServico {
 
     public void setNome_servico(String nome_servico) {
         this.nome_servico = nome_servico;
+    }
+
+    public int getIdServico() {
+        return idServico;
+    }
+
+    public void setIdServico(int idServico) {
+        this.idServico = idServico;
     }
 }
