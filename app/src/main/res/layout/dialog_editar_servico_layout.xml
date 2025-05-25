@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="5dp">
+
+    <Button
+        android:backgroundTint="@color/corPrimaria"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignParentRight="true"
+        android:text="X"
+        android:id="@+id/btnEditarServicoCancelar"
+        android:textSize="20sp"
+        android:layout_margin="10dp"/>
+
+    <View
+        android:layout_below="@id/btnEditarServicoCancelar"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="@color/corPrimaria"
+        android:id="@+id/viewLinha"/>
+
+    <TextView
+        android:layout_below="@id/viewLinha"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:id="@+id/txtTitulo"
+        android:textColor="@color/corPrimaria"
+        android:textSize="40sp"
+        android:text="Serviço"/>
+
+    <EditText
+        android:layout_below="@id/txtTitulo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/corPrimaria"
+        android:hint=""
+        android:text="hhhh"
+        android:textSize="20sp"
+        android:id="@+id/txtEditServiceNome"
+        android:layout_margin="5dp"/>
+
+    <EditText
+        android:layout_below="@id/txtEditServiceNome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/corPrimaria"
+        android:hint=""
+        android:text="hhhhh"
+        android:textSize="20sp"
+        android:id="@+id/txtEditServiceValor"
+        android:layout_margin="5dp"/>
+
+    <Button
+        android:layout_width="120dp"
+        android:layout_height="80dp"
+        android:layout_below="@id/txtEditServiceValor"
+        android:text="Excluir Serviço"
+        android:id="@+id/btnEditarServicoExcluir"
+        android:textSize="20sp"
+        android:backgroundTint="@color/corNegar"
+        android:layout_margin="10dp"/>
+
+    <Button
+        android:layout_width="250dp"
+        android:layout_height="80dp"
+        android:layout_below="@id/txtEditServiceValor"
+        android:layout_alignParentRight="true"
+        android:text="Salvar"
+        android:backgroundTint="@color/corAceitar"
+        android:id="@+id/btnEditarServicoSalvar"
+        android:textSize="20sp"
+        android:layout_margin="10dp"/>
+
+
+
+
+
+</RelativeLayout>

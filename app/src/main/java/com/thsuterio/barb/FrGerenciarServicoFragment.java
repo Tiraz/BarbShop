@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class FrGerenciarServicoFragment extends Fragment {
+public class FrGerenciarServicoFragment extends Fragment implements EscutarClickService{
 
     //VAriáveis de controle
     RecyclerView recycler_view;
@@ -40,7 +40,10 @@ public class FrGerenciarServicoFragment extends Fragment {
         //Carregando alista com as informaçoes do banco
         listaServicos = new ArrayList<>(daoServ.listarTodos());
 
-        adaptador_servicos = new AdaptadorFragGerServicos(getContext(),listaServicos);
+        /**
+         * Adaptador com o listern no construtor
+         */
+        adaptador_servicos = new AdaptadorFragGerServicos(getContext(),listaServicos, this);
 
         recycler_view.setLayoutManager(new GridLayoutManager(getContext(),1));
         recycler_view.setAdapter(adaptador_servicos);
@@ -60,6 +63,20 @@ public class FrGerenciarServicoFragment extends Fragment {
 
         return view;
     }
+
+
+    /**
+     * este metodo vem do EscutarClickService
+     * usando interface para comunicar adaptador com Fragment
+     *
+     */
+    @Override
+    public void clickServ(String nome, double valor, int codigo) {
+        DialogEditarServico dialog = new DialogEditarServico(getContext(), nome, valor, codigo, adaptador_servicos);
+        dialog.show(getChildFragmentManager(), "EditarServico");
+    }
+
+
 
 
     /*private void adicionarServico(String nome, float valor){

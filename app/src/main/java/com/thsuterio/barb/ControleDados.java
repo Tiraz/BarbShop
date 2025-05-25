@@ -37,11 +37,14 @@ public class ControleDados {
 
     }
 
+    //Metodo para formatar em reais
+    public String valorFormatado(double valor){
+        //String fmt_valor = String.format("Valor Total: R$ %.2f", valor);
+        return String.format("R$ %.2f", valor);
+    }
+
 
     //DAO do serviço--------------------------------------------------------------
-    public void setContextDaoServ (Context context) {
-        daoServ = new DaoServicoDAO(context);
-    }
     public DaoServicoDAO getDaoServ(Context context){
         return daoServ = new DaoServicoDAO(context);
     }
