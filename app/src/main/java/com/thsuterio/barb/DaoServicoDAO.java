@@ -33,8 +33,8 @@ public class DaoServicoDAO {
         // Cria um ContentValues para mapear as colunas aos valores.
         ContentValues values = new ContentValues();
 
-        values.put(DbHelper.COLUMN_NOME, servico.getNome_servico());
-        values.put(DbHelper.COLUMN_VALOR, servico.getValor_servico());
+        values.put(DbHelper.COLUMN_SERV_NOME, servico.getNome_servico());
+        values.put(DbHelper.COLUMN_SERV_VALOR, servico.getValor_servico());
 
         // Insere no banco e retorna o ID gerado.
         long id = db.insert(DbHelper.TABLE_SERVICO, null, values);
@@ -59,9 +59,9 @@ public class DaoServicoDAO {
 
         // Define as colunas que queremos consultar.
         String[] colunas = {
-                DbHelper.COLUMN_ID,
-                DbHelper.COLUMN_NOME,
-                DbHelper.COLUMN_VALOR
+                DbHelper.COLUMN_SERV_ID,
+                DbHelper.COLUMN_SERV_NOME,
+                DbHelper.COLUMN_SERV_VALOR
         };
 
         // Faz a consulta no banco.
@@ -78,9 +78,9 @@ public class DaoServicoDAO {
         // Percorre o Cursor e cria objetos ObjServico.
         if (cursor.moveToFirst()) {
             do {
-                int id = cursor.getInt(cursor.getColumnIndexOrThrow(DbHelper.COLUMN_ID));
-                String nome = cursor.getString(cursor.getColumnIndexOrThrow(DbHelper.COLUMN_NOME));
-                float valor = cursor.getFloat(cursor.getColumnIndexOrThrow(DbHelper.COLUMN_VALOR));
+                int id = cursor.getInt(cursor.getColumnIndexOrThrow(DbHelper.COLUMN_SERV_ID));
+                String nome = cursor.getString(cursor.getColumnIndexOrThrow(DbHelper.COLUMN_SERV_NOME));
+                float valor = cursor.getFloat(cursor.getColumnIndexOrThrow(DbHelper.COLUMN_SERV_VALOR));
 
                 ObjServico servico = new ObjServico(nome, valor);
                 servico.setIdServico(id);
@@ -106,11 +106,11 @@ public class DaoServicoDAO {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
 
         ContentValues values = new ContentValues();
-        values.put(DbHelper.COLUMN_NOME, servico.getNome_servico());
-        values.put(DbHelper.COLUMN_VALOR, servico.getValor_servico());
+        values.put(DbHelper.COLUMN_SERV_NOME, servico.getNome_servico());
+        values.put(DbHelper.COLUMN_SERV_VALOR, servico.getValor_servico());
 
         // Condição de qual registro será atualizado.
-        String whereClause = DbHelper.COLUMN_ID + " = ?";
+        String whereClause = DbHelper.COLUMN_SERV_ID + " = ?";
         String[] whereArgs = { String.valueOf(servico.getIdServico()) };
 
         // Executa o update.
@@ -127,7 +127,7 @@ public class DaoServicoDAO {
     public int deletar(int idServico) {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
 
-        String whereClause = DbHelper.COLUMN_ID + " = ?";
+        String whereClause = DbHelper.COLUMN_SERV_ID + " = ?";
         String[] whereArgs = { String.valueOf(idServico) };
 
         // Executa o delete.

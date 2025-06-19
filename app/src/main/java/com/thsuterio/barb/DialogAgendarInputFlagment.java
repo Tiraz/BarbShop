@@ -36,8 +36,10 @@ import java.util.List;
 import java.util.Locale;
 
 public class DialogAgendarInputFlagment extends DialogFragment {
+
+
     public interface DialogLister{
-        void onInputReceived(String vl_total, String nome, String dia, String hora);
+        void onInputReceived(double vl_total, String nome, String dia, String hora, List<ObjServicoEscolha> listaServ);
     }
 
     MaterialDatePicker datePicker;
@@ -57,6 +59,9 @@ public class DialogAgendarInputFlagment extends DialogFragment {
     Button btn_salvar;
     Button btn_dia;
     Button btn_hora;
+
+    //Controle dados
+    ControleDados contDados = ControleDados.getInstance();
 
     float valor_total;
     String dia_passar, hora_passar;
@@ -83,6 +88,7 @@ public class DialogAgendarInputFlagment extends DialogFragment {
         LayoutInflater inflater = requireActivity().getLayoutInflater();
         View view = inflater.inflate(R.layout.dialog_agendar_input_layout,null);
 
+
         //variaveis para iniciar a data
         int hora_atual = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
         int minuto_atual = Calendar.getInstance().get(Calendar.MINUTE);
@@ -105,7 +111,7 @@ public class DialogAgendarInputFlagment extends DialogFragment {
         txt_valor_total = view.findViewById(R.id.txtValorTotalDialogAgendar);
 
         //Instancias
-        lista_opcoes = new ArrayList<>(ControleDados.getInstance().lista_escolha_cd);
+        lista_opcoes = new ArrayList<>(transformarServico(contDados.getDaoServ(requireContext()).listarTodos()));
         lista_escolhas = new ArrayList<>();
 
         //Setando Informaçoes iniciais
@@ -157,15 +163,15 @@ public class DialogAgendarInputFlagment extends DialogFragment {
             String input = edt_nome.getText().toString();
 
             if (lister != null) {
-                lister.onInputReceived(valorFormatado(valor_total), input
+                lister.onInputReceived(valor_total, input
                         ,btn_dia.getText().toString()
-                        ,btn_hora.getText().toString());
+                        ,btn_hora.getText().toString()
+                        ,new ArrayList<>(lista_escolhas));
                 //reiniciandoLista();
             } else {
                 // Log de erro para depuração
                 System.err.println("Erro: lister está null!");
             }
-
             dialog.dismiss();
         });
 
@@ -281,7 +287,7 @@ public class DialogAgendarInputFlagment extends DialogFragment {
     }
 
     //Metodo para formatar em reais
-    private String valorFormatado(float valor){
+    private String valorFormatado(double valor){
         //String fmt_valor = String.format("Valor Total: R$ %.2f", valor);
         return String.format("Valor Total: R$ %.2f", valor);
     }
@@ -293,5 +299,19 @@ public class DialogAgendarInputFlagment extends DialogFragment {
         adp_dialog_agendar.notifyDataSetChanged();
         Toast.makeText(getContext(), String.valueOf(lista_opcoes.size()) + "  " +
                 String.valueOf(ControleDados.getInstance().lista_escolha_cd.size()), Toast.LENGTH_SHORT).show();
+    }
+
+    //Metodo para criar encher a lista de oçoes com os seeviços
+    private List<ObjServicoEscolha> transformarServico(List<ObjServico> listatransformar) {
+        List<ObjServicoEscolha> lista = new ArrayList<>();
+        for (int i = 0; i < listatransformar.size(); i++) {
+            ObjServicoEscolha serv = new ObjServicoEscolha(
+                    listatransformar.get(i).getNome_servico(),
+                    listatransformar.get(i).getValor_servico(),
+                    listatransformar.get(i).getIdServico()
+            );
+            lista.add(serv);
+        }
+        return lista;
     }
 }

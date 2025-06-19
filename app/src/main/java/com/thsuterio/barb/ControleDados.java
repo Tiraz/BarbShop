@@ -4,11 +4,13 @@ import android.content.Context;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class ControleDados {
 
     //Atribto estatico que armazena a unica intancia da classe.
     private static final ControleDados INSTANCE = new ControleDados();
+    private Context contextoDaoServ;
 
     // DAO dos Objtos controle do banco de dados
     private DaoServicoDAO daoServ;
@@ -29,13 +31,15 @@ public class ControleDados {
 
 
     // Adicionar serviço
-    public void adicionarServico(String nome, float valor){
+    public void adicionarServico(String nome, double valor){
         String textNome = "Serviço: " + nome;
         ControleDados.getInstance().lista_servico_cd.add(
                 new ObjServico(textNome, valor)
         );
 
     }
+
+
 
     //Metodo para formatar em reais
     public String valorFormatado(double valor){
@@ -48,14 +52,41 @@ public class ControleDados {
     public DaoServicoDAO getDaoServ(Context context){
         return daoServ = new DaoServicoDAO(context);
     }
+    public DaoServicoDAO getDaoServSemContexto(){
+
+        return daoServ;
+    }
+    public void  setContextDaoServ(Context context) {
+        daoServ = new DaoServicoDAO(context);
+    }
 
     public List<ObjServico> getLista_servico_cd() {
         return lista_servico_cd;
     }
 
     public void setLista_servico_cd(List<ObjServico> lista_servico_cd) {
-        this.lista_servico_cd = daoServ.listarTodos();
+        this.lista_servico_cd = lista_servico_cd;
     }
 
     //-----------------------------------------------------------------------------
+
+    /**Metódo para escolher avatar da foto de maeneira aleatoria**/
+    public int avatarRandom(){
+        Random gerador = new Random();
+        int num = gerador.nextInt(6);
+        switch (num){
+            case 0:
+                return R.drawable.person_um;
+            case 1:
+                return R.drawable.person_dois;
+            case 2:
+                return R.drawable.person_tres;
+            case 3:
+                return R.drawable.person_quatro;
+            case 4:
+                return R.drawable.person_cinco;
+        }
+        return R.drawable.person_um;
+    }
+
 }

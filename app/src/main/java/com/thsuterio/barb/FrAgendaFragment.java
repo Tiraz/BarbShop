@@ -24,12 +24,16 @@ import java.util.Random;
 
 
 public class FrAgendaFragment extends Fragment implements DialogAgendarInputFlagment.DialogLister{
+
     RecyclerView recyclerView;
     List<ObjAgendado> list_agendado = new ArrayList<>();
     Button btn_novo_agendamento;
 
     AdaptadorFragAgenda adaptadorFragAgenda;
     CalendarView calendarView;
+
+    /**Banco Local**/
+    DaoAgenda daoAgenda;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -41,6 +45,9 @@ public class FrAgendaFragment extends Fragment implements DialogAgendarInputFlag
         btn_novo_agendamento = view.findViewById(R.id.btnNovoAgendamento);
         calendarView = view.findViewById(R.id.dtpAgenda);
 
+        //Instancias
+        daoAgenda = new DaoAgenda(requireContext());
+
 
 
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
@@ -51,19 +58,14 @@ public class FrAgendaFragment extends Fragment implements DialogAgendarInputFlag
             }
         });
 
-
-
+        int c = ControleDados.getInstance().lista_escolha_cd.size();
+        //Botão agendar novo horario
         btn_novo_agendamento.setOnClickListener(v -> {
+            //Toast.makeText(getContext(), ": " + c, Toast.LENGTH_SHORT).show();
             DialogAgendarInputFlagment dialog = new DialogAgendarInputFlagment();
             dialog.show(getChildFragmentManager(), "Teste");
         });
 
-
-
-        /*adicionarAgenda("Hugo", "50", "xx/xx/xxxx", "00:00");
-        adicionarAgenda("Pedro", "30", "xx/xx/xxxx", "00:00");
-        adicionarAgenda("João", "110", "xx/xx/xxxx", "00:00");
-        adicionarAgenda("Marcos", "70", "xx/xx/xxxx", "00:00");*/
 
         adaptadorFragAgenda = new AdaptadorFragAgenda(getContext(), ControleDados.getInstance().lista_agendado_cd);
 
@@ -75,43 +77,31 @@ public class FrAgendaFragment extends Fragment implements DialogAgendarInputFlag
     }
 
 
-    private void adicionarAgenda(String nome, String valor, String dia, String hora){
+    private void adicionarAgenda(String nome, double valor, String dia, String hora, List<ObjServicoEscolha> list){
         String textNome = "Nome: " + nome;
         //String textValor = "Valor: R$" + valor + ",00";
         String textDia = "Dia: " + dia;
         String textHora = "Hora: " + hora;
-        list_agendado.add(
-                new ObjAgendado(textDia,textHora, textNome,valor, avatarRandom())
-        );
+
+        ObjAgendado objAgendado = new ObjAgendado(dia,hora, nome,valor);
+
+        long id = daoAgenda.inserir(objAgendado);
+
+        /*for (int i = 0; i < list.size(); i++) {
+
+        }*/
+
         adaptadorFragAgenda.notifyDataSetChanged();
     }
 
-    private int avatarRandom(){
-        Random gerador = new Random();
-        int num = gerador.nextInt(6);
-        switch (num){
-            case 0:
-                return R.drawable.person_um;
-            case 1:
-                return R.drawable.person_dois;
-            case 2:
-                return R.drawable.person_tres;
-            case 3:
-                return R.drawable.person_quatro;
-            case 4:
-                return R.drawable.person_cinco;
-        }
-        return R.drawable.person_um;
-    }
-
     @Override
-    public void onInputReceived(String vl_total, String nome, String dia, String hora) {
-        adicionarAgenda(nome, vl_total,dia, hora);
+    public void onInputReceived(double vl_total, String nome, String dia, String hora, List<ObjServicoEscolha> listaServ) {
+        adicionarAgenda(nome, vl_total,dia, hora, listaServ);
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        adaptadorFragAgenda.atualizarListaAgendados(list_agendado);
+        adaptadorFragAgenda.atualizarListaAgendados(daoAgenda.readAgenda());
     }
 }

@@ -33,11 +33,14 @@ public class AdaptadorFragAgenda extends RecyclerView.Adapter<AdaptadorFragAgend
 
     @Override
     public void onBindViewHolder(@NonNull AdaptadorFragAgenda.ViewHolder holder, int position) {
+
         holder.nome_agenda.setText(lista_agendado.get(position).getNome_agendado());
-        holder.valor_agenda.setText(lista_agendado.get(position).getValor_agendado());
+        holder.valor_agenda.setText(String.valueOf(lista_agendado.get(position).getValor_agendado()));/**Formatar depois**/
         holder.dia_agenda.setText(lista_agendado.get(position).getDia_agendado());
         holder.hora_agenda.setText(lista_agendado.get(position).getHora_agendado());
-        holder.img_agendado.setImageResource(lista_agendado.get(position).getImg_agendado());
+        //pega imagem aleatoria para compor objeto
+        holder.img_agendado.setImageResource(ControleDados.getInstance().avatarRandom());
+
     }
 
     @Override
