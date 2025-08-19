@@ -4,18 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/corTercearia"
+    android:background="@color/corFundoLogo"
     android:orientation="vertical"
-    tools:context=".FrAgendaFragment">
-
-
-    <CalendarView
-        android:layout_width="wrap_content"
-        android:id="@+id/dtpAgenda"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:background="@color/corSecundaria" />
-
+    tools:context=".FrAgendaFragment"
+    android:padding="10dp">
 
     <Button
         android:id="@+id/btnNovoAgendamento"
@@ -23,7 +15,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
+        android:backgroundTint="@color/corAceitar"
         android:layout_gravity="center_horizontal"
+        android:textColor="@color/black"
         android:text="Novo"
         android:textSize="20sp"
         app:icon="@drawable/baseline_add" />

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/corFundoLogo">
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="@color/black"/>
+
+    <Button
+        android:layout_width="65dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnFecharJanelaTrab"
+        android:text="X"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="5dp"
+        android:textSize="25sp"
+        android:backgroundTint="#EF0606"/>
+
+    <TextView
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Opções da agenda"
+        android:textSize="25sp"
+        android:id="@+id/txtTitulo"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/white"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="10dp"/>
+
+    <Button
+        android:layout_below="@id/txtTitulo"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="Desmarcar hórario"
+        android:textSize="20dp"
+        android:id="@+id/btnCancelarTrab"
+        android:backgroundTint="@color/corNegar"
+        android:textColor="@color/black"
+        android:layout_margin="10dp"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="Completar hórario"
+        android:textSize="20dp"
+        android:layout_below="@id/btnCancelarTrab"
+        android:id="@+id/btnFinalizarTrab"
+        android:backgroundTint="@color/corAceitar"
+        android:textColor="@color/black"
+        android:layout_margin="10dp"/>
+
+
+
+
+</RelativeLayout>

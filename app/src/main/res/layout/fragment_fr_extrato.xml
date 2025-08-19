@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/corQuartenaria"
+    android:background="@color/corFundoLogo"
     android:orientation="vertical"
     tools:context=".FrExtratoFragment">
 
@@ -11,9 +11,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
-        android:text="Novembro"
+        android:text="Mês"
         android:textSize="25sp"
-        android:textColor="@color/corSecundaria"/>
+        android:textColor="@color/black"/>
 
     <LinearLayout
         android:layout_width="match_parent"

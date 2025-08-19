@@ -45,8 +45,7 @@ public class AdaptadorFragGerServicos extends RecyclerView.Adapter<AdaptadorFrag
     @Override
     public void onBindViewHolder(@NonNull AdaptadorFragGerServicos.ViewHolder holder, int position) {
         //Formatando valor
-        String fmt_valor = "Valor: R$ " + list_servicos.get(position)
-                        .getValor_servico();
+        String fmt_valor = ControleDados.getInstance().valorFormatado(list_servicos.get(position).getValor_servico());
 
         //Setando os valores no modelo
         holder.nome_servico.setText(list_servicos.get(position).getNome_servico());

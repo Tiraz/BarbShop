@@ -86,7 +86,7 @@ public class DaoAgenda {
                 long id = cursor.getLong(cursor.getColumnIndexOrThrow(DbHelper.COLUMN_AGENDA_ID));
                 String nome = cursor.getString(cursor.getColumnIndexOrThrow(DbHelper.COLUMN_AGENDA_NOME));
                 String dia =  cursor.getString(cursor.getColumnIndexOrThrow(DbHelper.COLUMN_AGENDA_DIA));
-                String hora =  cursor.getString(cursor.getColumnIndexOrThrow(DbHelper.COLUMN_AGENDA_NOME));
+                String hora =  cursor.getString(cursor.getColumnIndexOrThrow(DbHelper.COLUMN_AGENDA_HORA));
                 double valor =  cursor.getDouble(cursor.getColumnIndexOrThrow(DbHelper.COLUMN_AGENDA_VALOR));
 
                 //Objeto Loja vazio

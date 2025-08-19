@@ -14,12 +14,15 @@ import java.util.List;
 import java.util.zip.Inflater;
 
 public class AdaptadorFragAgenda extends RecyclerView.Adapter<AdaptadorFragAgenda.ViewHolder> {
+
     Context context;
     List<ObjAgendado> lista_agendado;
+    InExtratoAdmin extratoAdmin;
 
-    public AdaptadorFragAgenda(Context context, List<ObjAgendado> lista_agendado) {
+    public AdaptadorFragAgenda(Context context, List<ObjAgendado> lista_agendado, InExtratoAdmin extratoAdmin) {
         this.context = context;
         this.lista_agendado = lista_agendado;
+        this.extratoAdmin = extratoAdmin;
     }
 
     @NonNull
@@ -34,12 +37,26 @@ public class AdaptadorFragAgenda extends RecyclerView.Adapter<AdaptadorFragAgend
     @Override
     public void onBindViewHolder(@NonNull AdaptadorFragAgenda.ViewHolder holder, int position) {
 
+        //Formata o valor
+        String valorFmt = ControleDados.getInstance().valorFormatado(lista_agendado.get(position).getValor_agendado());
+
         holder.nome_agenda.setText(lista_agendado.get(position).getNome_agendado());
-        holder.valor_agenda.setText(String.valueOf(lista_agendado.get(position).getValor_agendado()));/**Formatar depois**/
+        holder.valor_agenda.setText(valorFmt);
         holder.dia_agenda.setText(lista_agendado.get(position).getDia_agendado());
         holder.hora_agenda.setText(lista_agendado.get(position).getHora_agendado());
+
         //pega imagem aleatoria para compor objeto
         holder.img_agendado.setImageResource(ControleDados.getInstance().avatarRandom());
+
+        /** Capturando click na agenda **/
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //passando o item clicado atraves de uma interface
+                extratoAdmin.criarExtrato(lista_agendado.get(position));
+
+            }
+        });
 
     }
 

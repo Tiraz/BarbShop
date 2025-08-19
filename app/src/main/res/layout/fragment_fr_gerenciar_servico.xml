@@ -13,6 +13,8 @@
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
         android:layout_gravity="center_horizontal"
+        android:backgroundTint="@color/corAceitar"
+        android:textColor="@color/black"
         android:text="Novo"
         android:textSize="20sp"
         app:icon="@drawable/baseline_add" />

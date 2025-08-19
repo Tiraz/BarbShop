@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -32,8 +33,11 @@ public class FrAgendaFragment extends Fragment implements DialogAgendarInputFlag
     AdaptadorFragAgenda adaptadorFragAgenda;
     CalendarView calendarView;
 
+    IDevolverEscolhaAgendada escolhaAgendada;
+
     /**Banco Local**/
     DaoAgenda daoAgenda;
+    DaoExtrato daoExtrato;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -43,31 +47,52 @@ public class FrAgendaFragment extends Fragment implements DialogAgendarInputFlag
         //Apresentação de variaveis
         recyclerView = view.findViewById(R.id.recFragmentAgenda);
         btn_novo_agendamento = view.findViewById(R.id.btnNovoAgendamento);
-        calendarView = view.findViewById(R.id.dtpAgenda);
 
         //Instancias
         daoAgenda = new DaoAgenda(requireContext());
+        daoExtrato = new DaoExtrato(requireContext());
 
-
-
-        calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
-            @Override
-            public void onSelectedDayChange(@NonNull CalendarView calendarView, int i, int i1, int i2) {
-                int ajuste_mes = i1 + 1;
-                Toast.makeText(getContext(), " data: " + i2 + "/" + ajuste_mes + "/" + i, Toast.LENGTH_SHORT).show();
-            }
-        });
 
         int c = ControleDados.getInstance().lista_escolha_cd.size();
         //Botão agendar novo horario
         btn_novo_agendamento.setOnClickListener(v -> {
             //Toast.makeText(getContext(), ": " + c, Toast.LENGTH_SHORT).show();
             DialogAgendarInputFlagment dialog = new DialogAgendarInputFlagment();
-            dialog.show(getChildFragmentManager(), "Teste");
+            dialog.show(getChildFragmentManager(), "NovoHorario");
         });
 
 
-        adaptadorFragAgenda = new AdaptadorFragAgenda(getContext(), ControleDados.getInstance().lista_agendado_cd);
+        adaptadorFragAgenda = new AdaptadorFragAgenda(getContext(), ControleDados.getInstance().lista_agendado_cd,
+                new InExtratoAdmin() {
+                    @Override
+                    public void criarExtrato(ObjAgendado agendado) {
+
+                        DialogOpcoesAgenda dialogOpcoesAgenda = new DialogOpcoesAgenda();
+                        dialogOpcoesAgenda.show(getChildFragmentManager(), "Opcao");
+                        dialogOpcoesAgenda.devolver = escolha -> {
+
+                            switch (escolha) {
+                                case 1:
+                                    adicionarExtrato(agendado);
+                                    Toast.makeText(getContext(), "Serviço finalizado!", Toast.LENGTH_SHORT).show();
+                                    break;
+                                case 2:
+                                    break;
+                                case 3:
+                                    exculirAgendado(agendado);
+                                    break;
+                                case 0:
+
+                                    break;
+                                default:
+                                    Toast.makeText(getContext(), "Default", Toast.LENGTH_SHORT).show();
+                                    break;
+                            }
+
+                        };
+
+                    }
+                });
 
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(),1));
 
@@ -87,16 +112,42 @@ public class FrAgendaFragment extends Fragment implements DialogAgendarInputFlag
 
         long id = daoAgenda.inserir(objAgendado);
 
-        /*for (int i = 0; i < list.size(); i++) {
+        adaptadorFragAgenda.notifyDataSetChanged();
+        adaptadorFragAgenda.atualizarListaAgendados(daoAgenda.readAgenda());
+    }
 
-        }*/
+    // Adicionar ao extrato
+    private void adicionarExtrato(ObjAgendado agendado) {
 
+         //Criando o objExtrato para inserir no banco
+         ObjExtrato extrato = new ObjExtrato();
+
+         extrato.setNome_extrato(agendado.getNome_agendado());
+         extrato.setDia_extrato(agendado.getDia_agendado());
+         extrato.setHora_extrato(agendado.getHora_agendado());
+         extrato.setValor_extrato(agendado.getValor_agendado());
+
+         //Create no banco
+         daoExtrato.inserirExtrato(extrato);
+
+         //excluindo agendado finalizado
+         exculirAgendado(agendado);
+    }
+
+    //Excluir agendado
+    private void exculirAgendado(ObjAgendado agendado){
+
+        daoAgenda.deletar(agendado.getCodigo());
+
+        adaptadorFragAgenda.atualizarListaAgendados(daoAgenda.readAgenda());
         adaptadorFragAgenda.notifyDataSetChanged();
     }
+
 
     @Override
     public void onInputReceived(double vl_total, String nome, String dia, String hora, List<ObjServicoEscolha> listaServ) {
         adicionarAgenda(nome, vl_total,dia, hora, listaServ);
+        adaptadorFragAgenda.notifyDataSetChanged();
     }
 
     @Override
@@ -104,4 +155,8 @@ public class FrAgendaFragment extends Fragment implements DialogAgendarInputFlag
         super.onResume();
         adaptadorFragAgenda.atualizarListaAgendados(daoAgenda.readAgenda());
     }
+
+
+
+
 }

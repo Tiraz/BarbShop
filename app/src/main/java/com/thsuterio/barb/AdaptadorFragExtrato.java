@@ -35,9 +35,13 @@ public class AdaptadorFragExtrato extends RecyclerView.Adapter<AdaptadorFragExtr
 
     @Override
     public void onBindViewHolder(@NonNull AdaptadorFragExtrato.ViewHolder holder, int position) {
+
+        //Formatando valor
+        String valorFmt = ControleDados.getInstance().valorFormatado(lista_extrato.get(position).getValor_extrato());
+
         holder.dia_ext.setText(lista_extrato.get(position).getDia_extrato());
         holder.quant_ext.setText(String.valueOf(lista_extrato.get(position).getQuantidade_extrato()));
-        holder.valor_ext.setText(String.valueOf(lista_extrato.get(position).getValor_extrato()));
+        holder.valor_ext.setText(String.valueOf(valorFmt));
     }
 
     @Override
